@@ -1,67 +1,49 @@
-name: Deploy to Flutter
+name: Build and Deploy Flutter Web with Rust
 
-
-on:  # onで実行タイミングを設定
+on:
   push:
     branches:
-      - main
-
-  #workflow_dispatch: # 手動で実行するAction
-
-
+      - main  # ← main ブランチに push されたら実行
 
 jobs:
-  build:
-    runs-on: ubuntu-latest #18.04
-    timeout-minutes: 30
+  build-deploy:
+    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Repository
-        id: version
-        run: |
-          REPOSITORY=$(echo ${{ github.repository }} | sed -e "s#.*/##")
-          echo ::set-output name=repository::$REPOSITORY
-      - name: Flutter
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: wasm32-unknown-unknown
+          override: true
+
+      - name: Install wasm-pack
+        run: cargo install wasm-pack
+
+      - name: Build Rust to Wasm
+        run: wasm-pack build --target web --out-dir ./web/pkg
+
+      - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.0.5'
-          channel: 'stable'
-          cache: true
-      - run: flutter --version
-      - run: flutter pub get
-      - run: flutter build web --web-renderer html
-      - run: flutter build web --base-href /${{ steps.version.outputs.repository }}/
-      - run: ls -R
-      - name: Deploy
+          flutter-version: '3.19.x'
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Get repo name
+        id: vars
+        run: |
+          echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
+
+      - name: Build Flutter Web
+        run: flutter build web --web-renderer html --base-href "/${{ env.REPO_NAME }}/"
+
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/web/
           publish_branch: gh-pages
-
-      #ビルドした成果物をダウンロードできるようにする
-      #Debug Build, Release Build共にビルドを実行完了した後のapkファイル, aabファイルなどの各種成果物をダウンロードできるようにには以下の項目を追加します
-      - name: build/web to outputs 
-        uses: actions/upload-artifact@v3
-        with:
-          name: outputs
-          path: build/web/
-      #これにより以下のように成果物をダウンロードすることができます。        
-      #apkファイルの成果物は outputs/apk/release/app-release.apk, aabファイルの成果物は outputs/bundle/release/app-release.aab にあります。
-
-      
-      #ディレクトリ全体をアップロードする
-      #- uses: actions/upload-artifact@v3
-      #  with:
-      #    name: my-artifact
-      #    path: ./docs # or path/to/artifact     
-  #say_hello:
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #    - run: echo "Hello World! to Flutter to Flutter"
-
-
-  
+          publish_dir: build/web
