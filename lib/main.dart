@@ -42,6 +42,9 @@ class _StockDataScreenState extends State<StockDataScreen> {
   List<dynamic> stockDataList = [];         // fetch結果全体 (Top2 + ThirdData)
   List<dynamic> fetchTopDataList = [];      // fetch結果のTop2
   List<dynamic> fetchThirdDataList = [];    // fetch結果の株価詳細リスト (stockDataに対応)
+  List<Map<String, dynamic>> fetchThirdStorageDataList = []; // 仮のリスト名
+  List<Map<String, dynamic>> _savedData = [];
+
 
   double totalPurchaseValue = 0;
   double totalMarketCapValue = 0;
@@ -320,9 +323,206 @@ class _StockDataScreenState extends State<StockDataScreen> {
 
 
   // --- ダイアログ表示メソッド (変更なし) ---
-  void _showEditDialog(int index) {/* ... */}
-  void _showInitialInputDialog() {/* ... */}
-  void _showAddDialog() {/* ... */}
+  //void _showEditDialog(int index) {/* ... */}
+  void _showEditDialog(int index) {
+    final currentData = Map<String, dynamic>.from(_savedData[index]);
+    final codeController = TextEditingController(text: currentData['Code']);
+    final sharesController = TextEditingController(
+      text: currentData['Shares'].toString(),
+    );
+    final unitPriceController = TextEditingController(
+      text: currentData['Unitprice'].toString(),
+    );
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('株価データの編集'),
+          content: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                TextField(
+                  controller: codeController,
+                  decoration: const InputDecoration(labelText: 'コード'),
+                ),
+                TextField(
+                  controller: sharesController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(labelText: '株数'),
+                ),
+                TextField(
+                  controller: unitPriceController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(labelText: '単価'),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('キャンセル'),
+            ),
+            TextButton(
+              onPressed: () {
+                final newData = {
+                  'Code': codeController.text,
+                  'Shares': int.tryParse(sharesController.text) ?? 0,
+                  'Unitprice': int.tryParse(unitPriceController.text) ?? 0,
+                };
+                _editDataItem(index, newData);
+                Navigator.of(context).pop();
+              },
+              child: const Text('保存'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  //void _showInitialInputDialog() {/* ... */}
+  void _showInitialInputDialog() {
+    final codeController = TextEditingController();
+    final sharesController = TextEditingController();
+    final unitPriceController = TextEditingController();
+
+    showDialog(
+      context: context,
+      barrierDismissible: false, // ユーザーがダイアログの外側をタップしても閉じないようにする
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('初期株価データの入力'),
+          content: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                const Text('ローカルストレージにデータが見つかりませんでした。初期データを入力してください。'),
+                const SizedBox(height: 16.0),
+                TextField(
+                  controller: codeController,
+                  decoration: const InputDecoration(labelText: 'コード'),
+                ),
+                TextField(
+                  controller: sharesController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(labelText: '株数'),
+                ),
+                TextField(
+                  controller: unitPriceController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(labelText: '単価'),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                // キャンセル処理（必要であれば）
+                Navigator.of(context).pop();
+                setState(() {
+                  _showInputScreen = true; // キャンセルされた場合は入力画面を表示
+                });
+              },
+              child: const Text('キャンセル'),
+            ),
+            TextButton(
+              onPressed: () {
+                final code = codeController.text;
+                if (code.isNotEmpty) {
+                  final newData = {
+                    'Code': code,
+                    'Shares': int.tryParse(sharesController.text) ?? 0,
+                    'Unitprice': int.tryParse(unitPriceController.text) ?? 0,
+                  };
+                  _saveInitialData(newData);
+                  Navigator.of(context).pop();
+                } else {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(const SnackBar(content: Text('コードは必須です。')));
+                }
+              },
+              child: const Text('保存'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+  //void _showAddDialog() {/* ... */}
+  void _showAddDialog() {
+    final codeController = TextEditingController();
+    final sharesController = TextEditingController();
+    final unitPriceController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('株価データの追加'),
+          content: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                TextField(
+                  controller: codeController,
+                  decoration: const InputDecoration(labelText: 'コード'),
+                ),
+                TextField(
+                  controller: sharesController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(labelText: '株数'),
+                ),
+                TextField(
+                  controller: unitPriceController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(labelText: '単価'),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('キャンセル'),
+            ),
+            TextButton(
+              onPressed: () {
+                final newStock = {
+                  'Code': codeController.text,
+                  'Shares': int.tryParse(sharesController.text) ?? 0,
+                  'Unitprice': int.tryParse(unitPriceController.text) ?? 0,
+                };
+                // ここで _savedData を更新し、UI を再描画する
+                setState(() {
+                  fetchThirdStorageDataList.add(newStock); // 追加
+                });
+
+                if (newStock['Code'] != null &&
+                    (newStock['Code'] as String).isNotEmpty) {
+                  _addStockData(newStock);
+                  Navigator.of(context).pop();
+                } else {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(const SnackBar(content: Text('コードは必須です。')));
+                }
+              },
+              child: const Text('保存'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   // --- 計算メソッド (変更なし) ---
   double _calculateTotalPurchaseValue(List<dynamic> currentStockData) {

@@ -12,7 +12,7 @@
             "args": [
                 "--web-browser-flag",
                 "--disable-web-security",
-                "--web-port", "5090"
+                "--web-port", "5020"
             ],
             "flutterMode": "debug" // 必要に応じて "profile" または "release" に変更
         },
