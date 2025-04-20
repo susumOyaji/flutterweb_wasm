@@ -32,7 +32,8 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-!build/pkg/
+/pkg/
+!/pkg/
 
 
 # Symbolication related
