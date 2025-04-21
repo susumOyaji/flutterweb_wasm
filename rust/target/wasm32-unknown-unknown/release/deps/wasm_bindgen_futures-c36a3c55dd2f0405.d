@@ -1,0 +1,9 @@
+C:\Users\Medical\Documents\GitHub\flutterweb_wasm\rust\target\wasm32-unknown-unknown\release\deps\libwasm_bindgen_futures-c36a3c55dd2f0405.rmeta: C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.50\src/lib.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.50\src\queue.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.50\src\task\singlethread.rs
+
+C:\Users\Medical\Documents\GitHub\flutterweb_wasm\rust\target\wasm32-unknown-unknown\release\deps\libwasm_bindgen_futures-c36a3c55dd2f0405.rlib: C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.50\src/lib.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.50\src\queue.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.50\src\task\singlethread.rs
+
+C:\Users\Medical\Documents\GitHub\flutterweb_wasm\rust\target\wasm32-unknown-unknown\release\deps\wasm_bindgen_futures-c36a3c55dd2f0405.d: C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.50\src/lib.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.50\src\queue.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.50\src\task\singlethread.rs
+
+C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.50\src/lib.rs:
+C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.50\src\queue.rs:
+C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\wasm-bindgen-futures-0.4.50\src\task\singlethread.rs:

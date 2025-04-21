@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Flutter Web Wasm Example</title>
+</head>
+
+<body>
+  <script type="module">
+    import init, { fetch_data_rust } from "./web/pkg/rust_wasm.js"; // fetch_data_rust をインポート
+
+    init().then(() => {
+      console.log("WASM モジュールがロードされました！");
+      window.fetch_data_rust = fetch_data_rust; // グローバルスコープに公開
+    });
+  </script>
+  <script src="main.dart.js" type="application/javascript"></script>
+</body>
+
+</html>
