@@ -321,7 +321,76 @@ class _StockDataScreenState extends State<StockDataScreen> {
 
   // --- ダイアログ表示メソッド (変更なし) ---
   void _showEditDialog(int index) {/* ... */}
-  void _showInitialInputDialog() {/* ... */}
+  //void _showInitialInputDialog() {/* ... */}
+  void _showInitialInputDialog() {
+    final codeController = TextEditingController();
+    final sharesController = TextEditingController();
+    final unitPriceController = TextEditingController();
+
+    showDialog(
+      context: context,
+      barrierDismissible: false, // ユーザーがダイアログの外側をタップしても閉じないようにする
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('初期株価データの入力'),
+          content: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                const Text('ローカルストレージにデータが見つかりませんでした。初期データを入力してください。'),
+                const SizedBox(height: 16.0),
+                TextField(
+                  controller: codeController,
+                  decoration: const InputDecoration(labelText: 'コード'),
+                ),
+                TextField(
+                  controller: sharesController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(labelText: '株数'),
+                ),
+                TextField(
+                  controller: unitPriceController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(labelText: '単価'),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                // キャンセル処理（必要であれば）
+                Navigator.of(context).pop();
+                setState(() {
+                  _showInputScreen = true; // キャンセルされた場合は入力画面を表示
+                });
+              },
+              child: const Text('キャンセル'),
+            ),
+            TextButton(
+              onPressed: () {
+                final code = codeController.text;
+                if (code.isNotEmpty) {
+                  final newData = {
+                    'Code': code,
+                    'Shares': int.tryParse(sharesController.text) ?? 0,
+                    'Unitprice': int.tryParse(unitPriceController.text) ?? 0,
+                  };
+                  _saveInitialData(newData);
+                  Navigator.of(context).pop();
+                } else {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(const SnackBar(content: Text('コードは必須です。')));
+                }
+              },
+              child: const Text('保存'),
+            ),
+          ],
+        );
+      },
+    );
+  }
   void _showAddDialog() {/* ... */}
 
   // --- 計算メソッド (変更なし) ---
