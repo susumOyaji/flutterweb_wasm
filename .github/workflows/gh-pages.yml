@@ -41,7 +41,7 @@ jobs:
           echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
 
       - name: Build Flutter Web
-        run: flutter build web --web-renderer html --base-href "/${{ env.REPO_NAME }}/"
+        run: flutter build web --base-href "/${{ env.REPO_NAME }}/"
 
       - name: Copy Wasm pkg into Flutter Web build
         run: cp -r web/pkg build/web/pkg
