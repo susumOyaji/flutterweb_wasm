@@ -25,7 +25,7 @@ jobs:
       - name: Build Rust to Wasm
         run: |
           cd rust
-          wasm-pack build --target web --out-dir ./web/pkg
+          wasm-pack build --target web --out-dir ..build//web/pkg
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -43,8 +43,8 @@ jobs:
       - name: Build Flutter Web
         run: flutter build web --base-href "/${{ env.REPO_NAME }}/"
 
-      - name: Copy Wasm pkg into Flutter Web build
-        run: cp -r web/pkg build/web/pkg
+      #- name: Copy Wasm pkg into Flutter Web build
+      #  run: cp -r web/pkg build/web/pkg
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
