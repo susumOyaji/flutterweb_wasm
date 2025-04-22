@@ -38,7 +38,7 @@ const RESOURCES = {"canvaskit/skwasm.js": "f2ad9363618c5f62e813740099a80e63",
 "manifest.json": "5e1481b8ee7ac601cdfb8626695ad14b",
 "indexmain.html": "c12431aba501262bb88b2e8b5487021c",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
-"flutter_bootstrap.js": "dcd1f21dab9493d21a14804a7eeb3048"};
+"flutter_bootstrap.js": "e4d81ed290ebef1ac07cd3306a879aa7"};
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = ["main.dart.js",
