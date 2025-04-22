@@ -23,7 +23,9 @@ jobs:
         run: cargo install wasm-pack
 
       - name: Build Rust to Wasm
-        run: wasm-pack build --target web --out-dir ./web/pkg
+        run: |
+          cd rust
+          wasm-pack build --target web --out-dir ./web/pkg
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
