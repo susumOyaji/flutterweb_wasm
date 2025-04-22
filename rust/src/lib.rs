@@ -93,9 +93,10 @@ async fn fetch_and_scrape_dow() -> Result<StockData, Box<dyn std::error::Error>>
     let body = response.text().await?;
     let document = Html::parse_document(&body);
 
-    let code_selector = Selector::parse("span._PriceBoardMain__code_2hoo6_14").unwrap();
-    let name_selector = Selector::parse("h2._PriceBoardMain__name_2hoo6_139").unwrap();
+    let code_selector = Selector::parse("span._PriceBoardMain__code_feslz_14").unwrap();
+    let name_selector = Selector::parse("h2._PriceBoardMain__name_feslz_139").unwrap();
     let price_selector = Selector::parse("span._StyledNumber__item_x0ii7_7 > span._StyledNumber__value_x0ii7_10").unwrap();
+    //#mainIndexPriceBoard > section > div._PriceBoardMain_feslz_1 > div._PriceBoardMain__priceInformation_feslz_66 > div._PriceBoardMain__headerPrice_feslz_73 > span > span > span
     let ratio_selector = Selector::parse("span._PriceChangeLabel__primary_l4zfe_55 > span._StyledNumber__value_x0ii7_10").unwrap(); // Ratio用の正確なSelectorが必要
     let percent_selector = Selector::parse("span._PriceChangeLabel__secondary_l4zfe_61 > span._StyledNumber__value_x0ii7_10").unwrap();
 
