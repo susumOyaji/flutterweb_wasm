@@ -12,21 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          target: wasm32-unknown-unknown
-          override: true
-
-      - name: Install wasm-pack
-        run: cargo install wasm-pack
-
-      - name: Build Rust to Wasm
-        run: |
-          cd rust
-          wasm-pack build --target web --out-dir ..build//web/pkg
-
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -42,6 +27,21 @@ jobs:
 
       - name: Build Flutter Web
         run: flutter build web --base-href "/${{ env.REPO_NAME }}/"
+
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: wasm32-unknown-unknown
+          override: true
+
+      - name: Install wasm-pack
+        run: cargo install wasm-pack
+
+      - name: Build Rust to Wasm
+        run: |
+          cd rust
+          wasm-pack build --target web --out-dir ../build/web/pkg
 
       #- name: Copy Wasm pkg into Flutter Web build
       #  run: cp -r web/pkg build/web/pkg
