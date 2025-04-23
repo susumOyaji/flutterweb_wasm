@@ -48,10 +48,9 @@ jobs:
 
       - name: Prepare deploy directory
         run: |
-          mkdir -p deploy
+          mkdir -p deploy/build/web/pkg
           # pkg以外をdeployにコピー
           rsync -av --exclude=pkg/ build/web/ deploy/
-          mkdir -p deploy/build/web # この行を追加
           # pkgディレクトリ構造ごとコピー
           rsync -av build/web/pkg/ deploy/build/web/pkg/
 
