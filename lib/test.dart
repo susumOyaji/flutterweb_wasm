@@ -19,7 +19,7 @@ class MyAppTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'FutureBuilder Sample',
+      title: 'FutureBuilder TestSample',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const MyHomePage(),
     );
