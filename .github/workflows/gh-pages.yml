@@ -46,10 +46,19 @@ jobs:
       #- name: Copy Wasm pkg into Flutter Web build
       #  run: cp -r web/pkg build/web/pkg
 
+      - name: Prepare deploy directory
+        run: |
+          mkdir deploy
+          rsync -av --exclude=pkg build/web/ deploy/
+          mkdir -p deploy/pkg
+          rsync -av build/web/pkg/ deploy/pkg/
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: build/web
-          destination_dir: build/web # gh-pages ブランチに作成するディレクトリ構造
+          publish_dir: ./deploy
+
+
+     
