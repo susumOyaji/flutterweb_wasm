@@ -51,4 +51,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: build
+          publish_dir: build/web
+          destination_dir: build/web # gh-pages ブランチに作成するディレクトリ構造
