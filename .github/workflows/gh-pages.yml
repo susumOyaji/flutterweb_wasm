@@ -51,6 +51,7 @@ jobs:
           mkdir -p deploy
           # pkg以外をdeployにコピー
           rsync -av --exclude=pkg/ build/web/ deploy/
+          mkdir -p deploy/build/web # この行を追加
           # pkgディレクトリ構造ごとコピー
           rsync -av build/web/pkg/ deploy/build/web/pkg/
 
