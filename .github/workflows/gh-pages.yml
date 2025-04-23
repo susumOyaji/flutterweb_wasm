@@ -52,7 +52,7 @@ jobs:
           # pkg以外をdeployにコピー
           rsync -av --exclude=pkg/ build/web/ deploy/
           # pkgディレクトリ構造ごとコピー
-          rsync -av build/web/pkg/ deploy/pkg/
+          rsync -av build/web/pkg/ deploy/build/web/pkg/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
