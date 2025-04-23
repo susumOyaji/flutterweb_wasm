@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Flutter Web Wasm Example</title>
+  
+</head>
+
+<body>
+  <div id="wasm-output"></div>
+
+
+  <script type="module">
+    //import init, * as wasmModule from './pkg/rust_wasm.js'; // '*' を使用してすべてのエクスポートを wasmModule オブジェクトとしてインポート
+
+
+
+    // Rust の WebAssembly をロード
+import init, { fetch_data_rust } from "./pkg/rust_wasm.js";
+
+async function loadWasm() {
+  await init(); // WebAssembly モジュールを初期化
+  window.wasm = {
+    fetchData: (jsonStockCodes) => {
+      return new Promise((resolve, reject) => {
+        try {
+          fetch_data_rust(jsonStockCodes)
+            .then(result => {
+              console.log('Result from Rust (before resolve):', result); // ★ この行を追加
+              console.log('Result from Rust (resolved Promise):', result); // ★ 修正
+              resolve(result);
+            })
+            .catch(error => {
+              console.error('Error from Rust:', error);
+              reject(error);
+            });
+        } catch (error) {
+          reject(error);
+        }
+      });
+    }
+  };
+}
+
+// WebAssembly をロード
+loadWasm().then(() => console.log("WASM モジュールがロードされました。"));
+
+
+    
+
+    
+
+  </script>
+  <script src="main.dart.js" type="application/javascript"></script>
+</body>
+
+</html>
