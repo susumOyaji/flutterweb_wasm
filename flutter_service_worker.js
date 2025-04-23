@@ -30,7 +30,7 @@ const RESOURCES = {"canvaskit/skwasm.js": "f2ad9363618c5f62e813740099a80e63",
 "assets/AssetManifest.json": "f79f53602680cf215bb660516b001c7f",
 "version.json": "1e5f9fe60131914cd64e76a223f63462",
 "flutter.js": "76f08d47ff9f5715220992f993002504",
-"main.dart.js": "19dbf9c428a9c966216f44af7d00d20a",
+"main.dart.js": "7ca98517e9d38cc6e9728d9c5baff7c5",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
@@ -41,9 +41,9 @@ const RESOURCES = {"canvaskit/skwasm.js": "f2ad9363618c5f62e813740099a80e63",
 "pkg/rust_wasm.js": "221353053a602ef3ed78a477312a5ccc",
 "pkg/rust_wasm_bg.wasm.d.ts": "407dd8ccf002fcc66341ee75379aecf5",
 "pkg/package.json": "531e18df69467019f87592dd8ebf1471",
-"pkg/rust_wasm_bg.wasm": "d972995386f6e34aa1e781933195d77a",
+"pkg/rust_wasm_bg.wasm": "daff7eaf38f75f18aa01849a67e0825b",
 "pkg/rust_wasm.d.ts": "3efee316615cad9d0e9354f9b61bca4c",
-"flutter_bootstrap.js": "a88e4746d944c4ad745d6fc741142c43"};
+"flutter_bootstrap.js": "0a812bc69ea6dd4f22f6cebe1c7463b9"};
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = ["main.dart.js",
