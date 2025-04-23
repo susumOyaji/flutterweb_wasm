@@ -1,0 +1,9 @@
+C:\Users\Medical\Documents\GitHub\flutterweb_wasm\rust\target\debug\deps\libstring_cache-8675eae196814fb3.rmeta: C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\string_cache-0.8.9\src/lib.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\string_cache-0.8.9\src\atom.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\string_cache-0.8.9\src\dynamic_set.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\string_cache-0.8.9\src\static_sets.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\string_cache-0.8.9\src\trivial_impls.rs
+
+C:\Users\Medical\Documents\GitHub\flutterweb_wasm\rust\target\debug\deps\string_cache-8675eae196814fb3.d: C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\string_cache-0.8.9\src/lib.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\string_cache-0.8.9\src\atom.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\string_cache-0.8.9\src\dynamic_set.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\string_cache-0.8.9\src\static_sets.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\string_cache-0.8.9\src\trivial_impls.rs
+
+C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\string_cache-0.8.9\src/lib.rs:
+C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\string_cache-0.8.9\src\atom.rs:
+C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\string_cache-0.8.9\src\dynamic_set.rs:
+C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\string_cache-0.8.9\src\static_sets.rs:
+C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\string_cache-0.8.9\src\trivial_impls.rs:

@@ -1,0 +1,9 @@
+C:\Users\Medical\Documents\GitHub\flutterweb_wasm\rust\target\debug\deps\libserde_wasm_bindgen-a1748965f3d4e333.rmeta: C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.6.5\src\lib.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.6.5\src\de.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.6.5\src\error.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.6.5\src\ser.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.6.5\src\../README.md
+
+C:\Users\Medical\Documents\GitHub\flutterweb_wasm\rust\target\debug\deps\serde_wasm_bindgen-a1748965f3d4e333.d: C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.6.5\src\lib.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.6.5\src\de.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.6.5\src\error.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.6.5\src\ser.rs C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.6.5\src\../README.md
+
+C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.6.5\src\lib.rs:
+C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.6.5\src\de.rs:
+C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.6.5\src\error.rs:
+C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.6.5\src\ser.rs:
+C:\Users\Medical\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.6.5\src\../README.md:
