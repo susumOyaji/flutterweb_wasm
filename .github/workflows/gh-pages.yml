@@ -50,9 +50,27 @@ jobs:
         run: |
           mkdir -p deploy/build/web/pkg
           # pkg以外をdeployにコピー
-          rsync -av build/web/ deploy/
+          rsync -av --exclude=pkg/ build/web/ deploy/
+
+          # build/web ディレクトリの内容を確認
+          echo "--- Contents of build/web ---"
+          ls -al build/web/
+
+          # deploy/build ディレクトリの内容を確認 (pkg コピー前)
+          echo "--- Contents of deploy/build (before pkg copy) ---"
+          ls -al deploy/build/
+
+
           # pkgディレクトリ構造ごとコピー
           rsync -av build/web/pkg/ deploy/build/web/pkg/
+
+          # deploy/build/web ディレクトリの内容を確認 (pkg コピー後)
+          echo "--- Contents of deploy/build/web (after pkg copy) ---"
+          ls -al deploy/build/web/
+
+          # deploy/build/web/pkg ディレクトリの内容を確認
+          echo "--- Contents of deploy/build/web/pkg ---"
+          ls -al deploy/build/web/pkg/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
