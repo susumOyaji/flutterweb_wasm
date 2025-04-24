@@ -43,41 +43,10 @@ jobs:
           cd rust
           wasm-pack build --target web --out-dir ../build/web/pkg
 
-      #- name: Copy Wasm pkg into Flutter Web build
-      #  run: cp -r web/pkg build/web/pkg
-
-      - name: Prepare deploy directory
-        run: |
-          mkdir -p deploy/build/web/pkg
-          # pkg以外をdeployにコピー
-          rsync -av --exclude=pkg/ build/web/ deploy/
-
-          # build/web ディレクトリの内容を確認
-          echo "--- Contents of build/web ---"
-          ls -al build/web/
-
-          # deploy/build ディレクトリの内容を確認 (pkg コピー前)
-          echo "--- Contents of deploy/build (before pkg copy) ---"
-          ls -al deploy/build/
-
-
-          # pkgディレクトリ構造ごとコピー
-          rsync -av build/web/pkg/ deploy/build/web/pkg/
-
-          # deploy/build/web ディレクトリの内容を確認 (pkg コピー後)
-          echo "--- Contents of deploy/build/web (after pkg copy) ---"
-          ls -al deploy/build/web/
-
-          # deploy/build/web/pkg ディレクトリの内容を確認
-          echo "--- Contents of deploy/build/web/pkg ---"
-          ls -al deploy/build/web/pkg/
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: ./deploy
-
-
-     
+          publish_dir: build/web # デプロイするディレクトリを build/web に変更
+          destination_dir: build/web # gh-pages ブランチのパスを指定
