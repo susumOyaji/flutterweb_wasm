@@ -41,7 +41,7 @@ jobs:
       - name: Build Rust to Wasm
         run: |
           cd rust
-          wasm-pack build --target web --out-dir ./build/web/pkg
+          wasm-pack build --target web --out-dir flutterweb_wasm/build/web/pkg
 
       - name: Prepare deploy folder
         run: |
