@@ -43,10 +43,13 @@ jobs:
           cd rust
           wasm-pack build --target web --out-dir ../build/web/pkg
 
+      - name: Check build/web contents
+        run: ls -al build/web/
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: build/web # デプロイするディレクトリを build/web に変更
-          destination_dir: build/web # gh-pages ブランチのパスを指定
+          publish_dir: build/web
+          destination_dir: build/web
