@@ -26,7 +26,7 @@ jobs:
           echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
 
       - name: Build Flutter Web
-        run: flutter build web --base-href "/build/web"
+        run: flutter build web --base-href "/build/web/"
 
       - name: Setup Rust
         uses: actions-rs/toolchain@v1
