@@ -41,7 +41,7 @@ jobs:
       - name: Build Rust to Wasm
         run: |
           cd rust
-          wasm-pack build --target web --out-dir ../build/web/pkg
+          wasm-pack build --target web --out-dir ../../build/web/pkg
 
       - name: Check build/web contents
         run: ls -al build/web/
