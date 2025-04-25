@@ -26,7 +26,7 @@ jobs:
           echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
 
       - name: Build Flutter Web
-        run: flutter build web --base-href "/${{ env.REPO_NAME }}/"
+        run: flutter build web --base-href "/build/web/"
 
       - name: Setup Rust
         uses: actions-rs/toolchain@v1
@@ -41,13 +41,17 @@ jobs:
       - name: Build Rust to Wasm
         run: |
           cd rust
-          wasm-pack build --target web --out-dir ../build/web/pkg
+          wasm-pack build --target web --out-dir ../../build/web/pkg
+
+      - name: Check build/web contents
+        run: ls -al build/web/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: build/web # デプロイするディレクトリを build/web に変更
-          # destination_dir: build/web # この行を削除
-          keep_files: true
+          publish_dir: build/web
+          destination_dir: build/web
+          keep_files: true # デプロイ前にファイルを削除しない
+        
