@@ -10,7 +10,7 @@
 
 <body>
   <script type="module">
-    import init, { fetch_data_rust } from "/flutterweb_wasm/build/web/pkg/rust_wasm.js"; // fetch_data_rust をインポート
+    import init, { fetch_data_rust } from "./build/web/pkg/rust_wasm.js"; // fetch_data_rust をインポート
 
     init().then(() => {
       console.log("WASM モジュールがロードされました！");
