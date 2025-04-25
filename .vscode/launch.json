@@ -10,6 +10,7 @@
             "type": "dart",
             "deviceId": "chrome",
             "args": [
+               
                 "--web-browser-flag",
                 "--disable-web-security",
                 "--web-port", "5088"
