@@ -53,3 +53,5 @@ jobs:
           publish_branch: gh-pages
           publish_dir: build/web
           destination_dir: build/web
+          keep_files: true # デプロイ前にファイルを削除しない
+        
