@@ -45,7 +45,7 @@ jobs:
 
       - name: Prepare deploy folder
         run: |
-          mkdir -p deploy
+          mkdir deploy
           cp -r build/web/* deploy/
           mkdir -p deploy/build/web/pkg
           cp -r build/web/pkg/* deploy/build/web/pkg/
